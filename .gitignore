@@ -30,3 +30,13 @@
 *.exe
 *.out
 *.app
+
+# Folders
+libs/
+/Debug/
+luaFiles/
+luaFiles
+.settings
+
+# Files
+.cproject

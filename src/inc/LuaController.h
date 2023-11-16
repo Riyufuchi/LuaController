@@ -27,14 +27,13 @@ public:
 	bool checkLua(int result);
 
 	// Register a C++ function as a Lua function
-		template <typename Func>
-		void registerFunction(const char* functionName, Func func)
-		{
-			void* funcPtr = reinterpret_cast<void*>(func);
-			lua_pushlightuserdata(L, funcPtr);
-			lua_pushcclosure(L, &LuaController::luaFunctionWrapper<Func>, 1);
-			lua_setglobal(L, functionName);
-		}
+	template <typename Func> void registerFunction(const char* functionName, Func func)
+	{
+		void* funcPtr = reinterpret_cast<void*>(func);
+		lua_pushlightuserdata(L, funcPtr);
+		lua_pushcclosure(L, &LuaController::luaFunctionWrapper<Func>, 1);
+		lua_setglobal(L, functionName);
+	}
 
 	bool executeFile(const char* fileName);
 
@@ -43,21 +42,15 @@ private:
 	lua_State* L;
 
 	// Lua C function wrapper for C++ functions
-	template <typename Func>
-	static int luaFunctionWrapper(lua_State* L)
+	template <typename Func> static int luaFunctionWrapper(lua_State* L)
 	{
 		Func* func = reinterpret_cast<Func*>(lua_touserdata(L, lua_upvalueindex(1)));
 		return callCFunction(L, func);
 	}
 
 	// Call the registered C++ function from Lua
-	template <typename Func>
-	static int callCFunction(lua_State* L, Func* func)
+	template <typename Func> static int callCFunction(lua_State* L, Func* func)
 	{
-		// Retrieve arguments from Lua stack and call C++ function
-		// ...
-		// Push the result back to Lua stack
-		// ...
 		return 1; // Number of return values
 	}
 };

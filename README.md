@@ -15,6 +15,7 @@ Controller for simplified embedding and controlling Lua from C++. I made this ou
 1. If you are going to use this library, you still need to incluse liblua.a (This was made for version 5.4.6)
 2. Folder **luaFiles** is [my Lua repository](https://github.com/Riyufuchi/Trying-out-Lua) so I will not include it in this reposiry
 3. Default path Lua in header file is "../../../lua-5.4.6/src/lua.hpp"
+4. Header files are in this repository **src/inc**
 
 ## Documentation
 

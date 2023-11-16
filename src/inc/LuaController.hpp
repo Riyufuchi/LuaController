@@ -10,7 +10,7 @@
 
 #include <iostream>
 //#include "../../libs/lua546/src/lua.hpp"
-#include "/home/riyufuchi/Documents/apps/libs/lua-5.4.6/src/lua.hpp"
+#include "../../../lua-5.4.6/src/lua.hpp"
 #include "LuaException.h"
 
 namespace LuaController

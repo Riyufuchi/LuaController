@@ -5,10 +5,10 @@
  *      Author: riyufuchi
  */
 
-#include "LuaException.h"
+#include "../inc/LuaException.h"
 
-namespace LuaController {
-
+namespace LuaController
+{
 LuaException::LuaException(char const* const message) throw() : std::runtime_error(message)
 {
 }
@@ -16,5 +16,4 @@ LuaException::LuaException(char const* const message) throw() : std::runtime_err
 LuaException::~LuaException()
 {
 }
-
 } /* namespace LuaController */

@@ -8,7 +8,7 @@
 
 #include <iostream>
 
-#include "../library/LuaController.h"
+#include "../inc/LuaController.h"
 //#include "../library/LuaException.h"
 
 int addFunction(int a, int b)
@@ -21,7 +21,7 @@ int main()
 	std::cout << "!!!Hello World!!!" << std::endl;
 	LuaController::LuaController lua;
 	lua.executeCode("print('Hello from Lua Controller!')"); // Execute Lua code
-	lua.executeCode("print('Hello from Lua Controller!'"); // Execute invalid Lua code
+	lua.executeCode("print('Hello'"); // Execute invalid Lua code
 
 	try
 	{

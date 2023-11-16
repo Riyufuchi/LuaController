@@ -24,6 +24,6 @@ Controller for simplified embedding and controlling Lua from C++. I made this ou
 
 ## Donate
 
-I'm 🇨🇿 student, so few dolars will be enought, unless you are planning to use this library in commercial application, than it would be fair if you will send more, possibly small share 10% of profits.
+I'm 🇨🇿 student, so few dolars will be enought, unless you are planning to use this library in commercial application, than it would be fair if you will send more, possibly small share of 5-10% of monthly profits.
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/P5P11WTFL)

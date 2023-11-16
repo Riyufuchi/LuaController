@@ -2,8 +2,10 @@
 // Name        : LuaController
 // Author      : Riyufuchi
 // Version     : 1.3
-// Copyright   : Your copyright notice
-// Description : This class
+// Created on  : 16.11.2023
+// Last Edit   : 17.11.2023
+// Copyright   : MIT
+// Description : This is Lua controller that simplifies working with embedded Lua
 //============================================================================
 #ifndef SRC_LIBRARY_LUACONTROLLER_H_
 #define SRC_LIBRARY_LUACONTROLLER_H_

@@ -8,7 +8,7 @@
 
 ## About
 
-This is Lua controller that is used to embed and controll Lua more easily.
+Controller for simplified embedding and controlling Lua from C++. I made this out of boredom so implementation might not be ideal. If you are going to use this Lua controller lib in your application, please give credit to me as well.
 
 ## Compilation
 

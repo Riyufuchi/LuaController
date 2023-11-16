@@ -8,7 +8,7 @@
 
 #include <iostream>
 
-#include "../inc/LuaController.h"
+#include "inc/LuaController.h"
 //#include "../library/LuaException.h"
 
 int addFunction(int a, int b)

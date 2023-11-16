@@ -37,6 +37,46 @@ bool LuaController::executeFile(const char* fileName)
 	return checkLua(luaL_dofile(L, fileName));
 }
 
+int LuaController::getInteger(const char* name)
+{
+	lua_getglobal(L, name);
+	if(lua_isinteger(L, -1))
+		return (int)lua_tonumber(L, -1);
+	return 0;
+}
+
+float LuaController::getFloat(const char* name)
+{
+	lua_getglobal(L, name);
+	if(lua_isnumber(L, -1))
+		return (float)lua_tonumber(L, -1);
+	return -3.14f;
+}
+
+double LuaController::getDouble(const char* name)
+{
+	lua_getglobal(L, name);
+	if(lua_isnumber(L, -1))
+		return (double)lua_tonumber(L, -1);
+	return -3.14;
+}
+
+bool LuaController::getBool(const char* name)
+{
+	lua_getglobal(L, name);
+	if(lua_isboolean(L, -1))
+		return lua_toboolean(L, -1);
+	return true;
+}
+
+std::string LuaController::getString(const char* name)
+{
+	lua_getglobal(L, name);
+	if(lua_isstring(L, -1))
+		return lua_tostring(L, -1);
+	return "std::string";
+}
+
 lua_State* LuaController::getLuaState()
 {
 	return L;

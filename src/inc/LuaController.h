@@ -37,6 +37,11 @@ public:
 
 	bool executeFile(const char* fileName);
 
+	int getInteger(const char* name);
+	float getFloat(const char* name);
+	double getDouble(const char* name);
+	bool getBool(const char* name);
+	std::string getString(const char* name);
 	lua_State* getLuaState();
 private:
 	lua_State* L;
@@ -44,14 +49,8 @@ private:
 	// Lua C function wrapper for C++ functions
 	template <typename Func> static int luaFunctionWrapper(lua_State* L)
 	{
-		Func* func = reinterpret_cast<Func*>(lua_touserdata(L, lua_upvalueindex(1)));
-		return callCFunction(L, func);
-	}
-
-	// Call the registered C++ function from Lua
-	template <typename Func> static int callCFunction(lua_State* L, Func* func)
-	{
-		return 1; // Number of return values
+		lua_touserdata(L, lua_upvalueindex(1));
+		return 1;
 	}
 };
 } // namespace LuaController

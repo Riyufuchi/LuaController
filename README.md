@@ -7,7 +7,7 @@
 
 ## About
 
-This is Lua controller that is used to embed lua more easiliy.
+This is Lua controller that is used to embed lua more easily.
 
 ## Usage
 

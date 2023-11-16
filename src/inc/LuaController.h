@@ -1,10 +1,10 @@
-/*
- * LuaController.h
- *
- *  Created on: Nov 16, 2023
- *  Author: riyufuchi
- */
-
+//============================================================================
+// Name        : LuaController
+// Author      : Riyufuchi
+// Version     : 1.3
+// Copyright   : Your copyright notice
+// Description : This class
+//============================================================================
 #ifndef SRC_LIBRARY_LUACONTROLLER_H_
 #define SRC_LIBRARY_LUACONTROLLER_H_
 
@@ -19,24 +19,26 @@ class LuaController
 public:
 	LuaController();
 	~LuaController();
-
-	void executeCode(const char* code);
-	void setLuaModules(const char* path);
-
-	void checkLuaOOP(int result);
+	// Check methods
 	bool checkLua(int result);
-
-	// Register a C++ function as a Lua function
-	template <typename Func> void registerFunction(const char* functionName, Func func)
-	{
-		void* funcPtr = reinterpret_cast<void*>(func);
-		lua_pushlightuserdata(L, funcPtr);
-		lua_pushcclosure(L, &LuaController::luaFunctionWrapper<Func>, 1);
-		lua_setglobal(L, functionName);
-	}
-
-	bool executeFile(const char* fileName);
-
+	bool checkLuaCLI(int result);
+	void checkLuaException(int result);
+	// Execute methods
+	int executeFile(const char* fileName);
+	int executeCode(const char* code);
+	bool executeFileCLI(const char* fileName);
+	bool executeCodeCLI(const char* code);
+	// Setters
+	int setLuaModules(const char* path);
+	void setLuaModulesCLI(const char* path);
+	void setInteger(const char* name, int val);
+	void setDouble(const char* name, double val);
+	void setBool(const char* name, bool val);
+	void setString(const char* name, const char* val);
+	// Getters
+	std::string getErrorMessage(int result);
+	std::string getLuaVersion();
+	double getLuaVerNum();
 	int getInteger(const char* name);
 	float getFloat(const char* name);
 	double getDouble(const char* name);
@@ -45,13 +47,6 @@ public:
 	lua_State* getLuaState();
 private:
 	lua_State* L;
-
-	// Lua C function wrapper for C++ functions
-	template <typename Func> static int luaFunctionWrapper(lua_State* L)
-	{
-		lua_touserdata(L, lua_upvalueindex(1));
-		return 1;
-	}
 };
 } // namespace LuaController
 #endif /* SRC_LIBRARY_LUACONTROLLER_H_ */

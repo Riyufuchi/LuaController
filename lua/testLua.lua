@@ -5,4 +5,14 @@ function main()
 	luaVersion = _VERSION
 end
 
+function power(x, n)
+	return x^n
+end
+
+function foo(x, y)
+	print("[LUA] called X = " .. x .. " Y = " .. y)
+	z = cppHostFunction(x * 10, y)
+	return z
+end
+
 main()

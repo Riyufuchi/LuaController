@@ -79,6 +79,11 @@ void LuaController::setString(const char* name, const char* val)
 	lua_setglobal(L, name);
 }
 
+int LuaController::getGlobal(const char* name)
+{
+	return lua_getglobal(L, name);
+}
+
 std::string LuaController::getLuaVersion()
 {
 	return getString("_VERSION");

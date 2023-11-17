@@ -21,6 +21,11 @@ class LuaController
 public:
 	LuaController();
 	~LuaController();
+	// Operator
+	operator lua_State*() const
+	{
+		return L;
+	}
 	// Check methods
 	bool checkLua(int result);
 	bool checkLuaCLI(int result);
@@ -38,6 +43,7 @@ public:
 	void setBool(const char* name, bool val);
 	void setString(const char* name, const char* val);
 	// Getters
+	int getGlobal(const char* name);
 	std::string getErrorMessage(int result);
 	std::string getLuaVersion();
 	double getLuaVerNum();

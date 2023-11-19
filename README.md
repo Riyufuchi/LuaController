@@ -17,6 +17,11 @@ Controller for simplified embedding and controlling Lua from C++. I made this ou
 2. Folder **luaFiles** is [my Lua repository](https://github.com/Riyufuchi/Trying-out-Lua) so I will not include it in this reposiry
 3. Default path Lua in header file is "../../../lua-5.4.6/src/lua.hpp"
 4. Header files are in this repository **src/inc**
+5. You can use makefile to compile it yourself
+   ```bash
+   git clone https://github.com/Riyufuchi/LuaController.git
+   make
+   ```
 
 ## Documentation
 

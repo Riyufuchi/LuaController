@@ -37,6 +37,10 @@ libs/
 luaFiles/
 luaFiles
 .settings
+build
+
+# Binary files
+LuaController
 
 # Files
 .cproject

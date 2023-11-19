@@ -1,9 +1,9 @@
 //============================================================================
-// Name        : CppTesting.cpp
+// Name        : LuaControllerDemo.cpp
 // Author      : Riyufuchi
 // Version     :
 // Copyright   : Your copyright notice
-// Description : Hello World in C++, Ansi-style
+// Description : Demonstrate using Lua controller
 //============================================================================
 
 #include <iostream>
@@ -17,6 +17,16 @@ void valueTransactionBasicDemo(LuaController::LuaController& lua);
 void executingLuaFileBasicDemo(LuaController::LuaController& lua);
 void callingLuaFunctionBasicDemo(LuaController::LuaController& lua);
 void callingLuaFunctionAvancedDemo(LuaController::LuaController& lua);
+void arraysFromLuaBasicDemo(LuaController::LuaController& lua, int index);
+
+struct TeamMember
+{
+	std::string name;
+	std::string role;
+	std::string joinDate;
+	std::string job;
+	int id;
+} teamMember;
 
 int hostFunctionLua(lua_State* L)
 {
@@ -38,7 +48,61 @@ int main()
 	executingLuaFileBasicDemo(lua);
 	callingLuaFunctionBasicDemo(lua);
 	callingLuaFunctionAvancedDemo(lua);
+	arraysFromLuaBasicDemo(lua, 1);
 	return 0;
+}
+
+void arraysFromLuaBasicDemo(LuaController::LuaController& lua, int index)
+{
+	//if (!lua.executeFileCLI("lua/teamTable.lua"))
+		//return;
+	lua.setLuaModulesCLI("lua/");
+	if (!lua.executeFileCLI("lua/teamTool.lua"))
+		return;
+	lua.getGlobal("getTeamMember");
+	if (!lua_isfunction(lua, -1))
+		return;
+	lua_pushnumber(lua, index);
+	if (!lua.checkLuaCLI(lua.callFunction(1, 1, 0)))
+		return;
+	//TeamMember mem1;
+	if (lua_istable(lua, -1))
+	{
+		lua_getfield(lua, -1, "id");
+		teamMember.id = lua_tonumber(lua, -1);
+		lua_pop(lua, 1);
+
+		lua_pushstring(lua, "name");
+		lua_gettable(lua, -2);
+		teamMember.name = lua_tostring(lua, -1);
+		lua_pop(lua, 1);
+
+		teamMember.role = lua.getStringField("role");
+		teamMember.joinDate = lua.getStringField("joinDate");
+		teamMember.job = lua.getStringField("job");
+
+		std::cout << "\n" << std::endl;
+		std::cout << "ID: " << teamMember.id << std::endl;
+		std::cout << "Name: " << teamMember.name << std::endl;
+		std::cout << "Role: " << teamMember.role << std::endl;
+		std::cout << "Join Date: " << teamMember.joinDate << std::endl;
+		std::cout << "Job: " << teamMember.job << std::endl;
+
+		//lua_pushstring(lua, "none");
+		//lua_setfield(lua, -2, "role");
+
+		lua.setStringField("role", "none");
+		lua.setStringField("job", "none");
+		teamMember.role = lua.getStringField("role");
+		teamMember.job = lua.getStringField("job");
+
+		std::cout << "\n" << std::endl;
+		std::cout << "ID: " << teamMember.id << std::endl;
+		std::cout << "Name: " << teamMember.name << std::endl;
+		std::cout << "Role: " << teamMember.role << std::endl;
+		std::cout << "Join Date: " << teamMember.joinDate << std::endl;
+		std::cout << "Job: " << teamMember.job << std::endl;
+	}
 }
 
 void callingLuaFunctionAvancedDemo(LuaController::LuaController& lua)

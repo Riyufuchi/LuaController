@@ -1,4 +1,4 @@
-package.path = package.path .. ";../luaFiles/src/?.lua"
+--package.path = package.path .. ";../luaFiles/src/?.lua"
 local bi = require("math/binomicDist")
 local conUtil = require("utilsCLI/code")
 

@@ -3,7 +3,7 @@
 // Author      : Riyufuchi
 // Version     : 1.3
 // Created on  : 16.11.2023
-// Last Edit   : 17.11.2023
+// Last Edit   : 19.11.2023
 // Copyright   : MIT
 // Description : This is Lua controller that simplifies working with embedded Lua
 //============================================================================
@@ -30,6 +30,8 @@ public:
 	bool checkLua(int result);
 	bool checkLuaCLI(int result);
 	void checkLuaException(int result);
+	// Call methods
+	int callFunction(int paramas, int returnVals, int errHandeling);
 	// Execute methods
 	int executeFile(const char* fileName);
 	int executeCode(const char* code);
@@ -37,6 +39,7 @@ public:
 	bool executeCodeCLI(const char* code);
 	// Setters
 	int setLuaModules(const char* path);
+	void setStringField(const char* name, std::string value);
 	void setLuaModulesCLI(const char* path);
 	void setInteger(const char* name, int val);
 	void setDouble(const char* name, double val);
@@ -44,6 +47,7 @@ public:
 	void setString(const char* name, const char* val);
 	// Getters
 	int getGlobal(const char* name);
+	std::string getStringField(const char* name);
 	std::string getErrorMessage(int result);
 	std::string getLuaVersion();
 	double getLuaVerNum();

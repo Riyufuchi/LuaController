@@ -19,6 +19,11 @@ LuaController::~LuaController()
 	lua_close(L);
 }
 
+int LuaController::callFunction(int params, int returnVals, int errHandeling)
+{
+	return lua_pcall(L, params, returnVals, errHandeling);
+}
+
 bool LuaController::executeCodeCLI(const char* code)
 {
 	return checkLuaCLI(luaL_dostring(L, code));
@@ -53,6 +58,26 @@ void LuaController::setLuaModulesCLI(const char* path)
 	luaCode += path;
 	luaCode += "?.lua'";
 	checkLuaCLI(luaL_dostring(L, luaCode.c_str()));
+}
+
+void LuaController::setStringField(const char* name, std::string value)
+{
+	lua_pushstring(L, value.c_str());
+	lua_setfield(L, -2, name);
+	//lua_pop(L, 1);
+}
+
+std::string LuaController::getStringField(const char* name)
+{
+	lua_getfield(L, -1, name);
+	if (lua_isstring(L, -1))
+	{
+		const char* str = lua_tostring(L, -1);
+		lua_pop(L, 1);
+		return std::string(str);
+	}
+	lua_pop(L, 1);
+	return "std::string";
 }
 
 void LuaController::setInteger(const char* name, int val)

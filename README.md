@@ -20,6 +20,7 @@ Controller for simplified embedding and controlling Lua from C++. I made this ou
 5. You can use makefile to compile it yourself
    ```bash
    git clone https://github.com/Riyufuchi/LuaController.git
+   cd LuaController
    make
    ```
 

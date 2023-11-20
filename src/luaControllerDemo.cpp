@@ -57,7 +57,7 @@ void arraysFromLuaBasicDemo(LuaController::LuaController& lua, int index)
 	//if (!lua.executeFileCLI("lua/teamTable.lua"))
 		//return;
 	lua.setLuaModulesCLI("lua/");
-	if (!lua.executeFileCLI("lua/teamTool.lua"))
+	if (!lua.executeFileCLI("lua/teamTools.lua"))
 		return;
 	lua.getGlobal("getTeamMember");
 	if (!lua_isfunction(lua, -1))

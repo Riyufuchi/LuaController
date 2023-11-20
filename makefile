@@ -17,7 +17,7 @@ SRC_FILES = $(wildcard $(SRC_DIR)/*.cpp)
 OBJ_FILES = $(patsubst $(SRC_DIR)/%.cpp,$(BUILD_DIR)/%.o,$(SRC_FILES))
 
 # Library
-LIB_NAME = libmylibrary.a
+LIB_NAME = libLuaController.a
 LIB_TARGET = $(BUILD_DIR)/$(LIB_NAME)
 
 # Targets

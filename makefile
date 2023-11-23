@@ -1,8 +1,6 @@
-# Makefile
-
 # Compiler and compiler flags
 CXX = g++
-CXXFLAGS = -Wall -Wextra -pedantic -std=c++11
+CXXFLAGS = -Wall -Wextra -pedantic #-std=c++11
 
 # Directories
 SRC_DIR = src/code

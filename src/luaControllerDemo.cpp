@@ -88,9 +88,6 @@ void arraysFromLuaBasicDemo(LuaController::LuaController& lua, int index)
 		std::cout << "Join Date: " << teamMember.joinDate << std::endl;
 		std::cout << "Job: " << teamMember.job << std::endl;
 
-		//lua_pushstring(lua, "none");
-		//lua_setfield(lua, -2, "role");
-
 		lua.setStringField("role", "none");
 		lua.setStringField("job", "none");
 		teamMember.role = lua.getStringField("role");
@@ -102,6 +99,10 @@ void arraysFromLuaBasicDemo(LuaController::LuaController& lua, int index)
 		std::cout << "Role: " << teamMember.role << std::endl;
 		std::cout << "Join Date: " << teamMember.joinDate << std::endl;
 		std::cout << "Job: " << teamMember.job << std::endl;
+
+		if (!lua.checkLuaCLI(lua.callFunction("saveTable",0, 0, 0)))
+				return;
+		std::cout << "\nData successfully saved\n";
 	}
 }
 

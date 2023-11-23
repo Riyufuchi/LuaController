@@ -1,9 +1,8 @@
 //============================================================================
 // Name        : LuaController
 // Author      : Riyufuchi
-// Version     : 1.3
 // Created on  : 16.11.2023
-// Last Edit   : 19.11.2023
+// Last Edit   : 23.11.2023
 // Copyright   : MIT
 // Description : This is Lua controller that simplifies working with embedded Lua
 //============================================================================
@@ -32,6 +31,7 @@ public:
 	void checkLuaException(int result);
 	// Call methods
 	int callFunction(int paramas, int returnVals, int errHandeling);
+	int callFunction(const char* functionName, int params, int returnVals, int errHandeling);
 	// Execute methods
 	int executeFile(const char* fileName);
 	int executeCode(const char* code);

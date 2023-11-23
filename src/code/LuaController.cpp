@@ -1,10 +1,11 @@
-/*
- * LuaController.cpp
- *
- *  Created on: Nov 16, 2023
- *      Author: riyufuchi
- */
-// LuaController.cpp
+//============================================================================
+// Name        : LuaController
+// Author      : Riyufuchi
+// Created on  : 16.11.2023
+// Last Edit   : 23.11.2023
+// Copyright   : MIT
+// Description : This is Lua controller that simplifies working with embedded Lua
+//============================================================================
 #include "../inc/LuaController.h"
 
 namespace LuaController
@@ -17,6 +18,12 @@ LuaController::LuaController() : L(luaL_newstate())
 LuaController::~LuaController()
 {
 	lua_close(L);
+}
+
+int LuaController::callFunction(const char* functionName, int params, int returnVals, int errHandeling)
+{
+	lua_getglobal(L, functionName);
+	return lua_pcall(L, params, returnVals, errHandeling);
 }
 
 int LuaController::callFunction(int params, int returnVals, int errHandeling)
